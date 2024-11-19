@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 
 import main.Server.http.Request;
 import main.Server.http.Response;
-import main.Server.util.httpRequestParser;
-import main.Server.util.httpResponseFormatter;
-import main.Server.util.httpSocket;
+import main.Server.util.HttpRequestParser;
+import main.Server.util.HttpResponseFormatter;
+import main.Server.util.HttpSocket;
 
 public class RequestHandler {
 
@@ -24,10 +24,10 @@ public class RequestHandler {
     }
 
     public void handle() {
-        httpRequestParser httpRequestParser = new httpRequestParser();
-        httpResponseFormatter httpResponseFormatter = new httpResponseFormatter();
+        HttpRequestParser httpRequestParser = new HttpRequestParser();
+        HttpResponseFormatter httpResponseFormatter = new HttpResponseFormatter();
 
-        try (httpSocket httpSocket = new httpSocket(this.socket)) {
+        try (HttpSocket httpSocket = new HttpSocket(this.socket)) {
             String http = httpSocket.read();
             Request request = httpRequestParser.parse(http);
 

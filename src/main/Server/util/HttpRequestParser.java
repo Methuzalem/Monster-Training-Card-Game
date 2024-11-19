@@ -3,7 +3,7 @@ package main.Server.util;
 import main.Server.http.Method;
 import main.Server.http.Request;
 
-public class httpRequestParser {
+public class HttpRequestParser {
 
     // http req string to java obj
     public Request parse(String http) {
