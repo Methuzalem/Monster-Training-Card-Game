@@ -1,11 +1,11 @@
-package main.Application.echo;
+package main.Application.Echo;
 
 import main.Server.Application;
 import main.Server.http.Request;
 import main.Server.http.Response;
 import main.Server.http.Status;
 
-public class echoApplication implements Application {
+public class EchoApplication implements Application {
 
     @Override
     public Response handle(Request request) {
