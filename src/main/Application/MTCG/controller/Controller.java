@@ -1,7 +1,7 @@
 package main.Application.MTCG.controller;
 
-import main.Application.exception.InvalidBodyException;
-import main.Application.exception.JsonParserException;
+import main.Application.MTCG.exception.InvalidBodyException;
+import main.Application.MTCG.exception.JsonParserException;
 import main.Server.http.Request;
 import main.Server.http.Response;
 import main.Server.http.Status;

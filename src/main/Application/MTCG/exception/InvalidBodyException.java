@@ -1,4 +1,4 @@
-package main.Application.exception;
+package main.Application.MTCG.exception;
 
 public class InvalidBodyException extends RuntimeException {
   public InvalidBodyException(String message) {
@@ -8,4 +8,4 @@ public class InvalidBodyException extends RuntimeException {
   public InvalidBodyException(Throwable cause) {
     super(cause);
   }
-}}
+}

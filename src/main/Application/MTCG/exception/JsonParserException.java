@@ -1,4 +1,4 @@
-package main.Application.exception;
+package main.Application.MTCG.exception;
 
 public class JsonParserException extends RuntimeException {
   public JsonParserException(String message) {
