@@ -4,14 +4,14 @@ import java.util.Map;
 
 import main.Server.http.Response;
 
-public class httpResponseFormatter {
+public class HttpResponseFormatter {
 
     // java http res obj to string
     public String format(Response response) {
         StringBuilder responseBuilder = new StringBuilder();
 
         if (null == response.getStatus()) {
-            throw new noHttpStatusException("Response does not contain a status");
+            throw new NoHttpStatusException("Response does not contain a status");
         }
 
         responseBuilder

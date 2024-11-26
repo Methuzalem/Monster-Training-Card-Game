@@ -3,13 +3,13 @@ package main.Server.util;
 import java.io.*;
 import java.net.Socket;
 
-public class httpSocket implements Closeable {
+public class HttpSocket implements Closeable {
 
     private final Socket socket;
     private final BufferedReader reader;
     private final BufferedWriter writer;
 
-    public httpSocket(Socket socket) throws IOException {
+    public HttpSocket(Socket socket) throws IOException {
         this.socket = socket;
 
         this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

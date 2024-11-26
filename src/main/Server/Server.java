@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class Server {
 
-    // opens port
+    // port opening
 
     private final Application application;
 
