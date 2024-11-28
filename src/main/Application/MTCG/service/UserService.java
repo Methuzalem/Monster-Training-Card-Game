@@ -2,11 +2,12 @@ package main.Application.MTCG.service;
 
 
 import main.Application.MTCG.entity.User;
-import main.Application.MTCG.exception.EntityNotFoundException;
+import main.Application.MTCG.exception.usersEXCPT.UsernameNotFound;
+import main.Application.MTCG.exception.usersEXCPT.UsernameExistsAlready;
 import main.Application.MTCG.repository.UserMemoryRepository;
 import main.Application.MTCG.repository.UserRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 public class UserService {
 
@@ -17,15 +18,21 @@ public class UserService {
     }
 
     public User create(User user) {
+        if(user == null) {
+            throw new NullPointerException("Error: user is NULL");
+        }
+
+        Optional<User> existingUser = userRepository.findUserByName(user.getUsername());
+
+        if (existingUser.isPresent()) {
+            throw new UsernameExistsAlready("Error: username already exists");
+        }
+
         return userRepository.save(user);
     }
 
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
-
-    public User getById(int id) {
-        return userRepository.find(id)
-                .orElseThrow(() -> new EntityNotFoundException(User.class.getName(), id));
+    public User getUserByName(String username) {
+        return userRepository.findUserByName(username)
+                .orElseThrow(() -> new UsernameNotFound(User.class.getName() + " was not found."));
     }
 }
