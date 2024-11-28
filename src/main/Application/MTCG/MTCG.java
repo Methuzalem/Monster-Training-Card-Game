@@ -1,5 +1,7 @@
 package main.Application.MTCG;
 
+import main.Application.MTCG.repository.UserMemoryRepository;
+import main.Application.MTCG.repository.UserRepository;
 import main.Server.Application;
 import main.Application.MTCG.controller.Controller;
 import main.Application.MTCG.controller.UserController;
@@ -10,12 +12,14 @@ import main.Server.http.Response;
 import main.Server.http.Status;
 
 public class MTCG implements Application {
-    private final UserController userController = new UserController();
 
     private final Router router;
+    //for data storing
+    public final UserRepository userRepository;
 
     public MTCG() {
         this.router = new Router();
+        this.userRepository = new UserMemoryRepository();
 
         this.initializeRoutes();
     }
@@ -43,6 +47,6 @@ public class MTCG implements Application {
     }
 
     private void initializeRoutes() {
-        this.router.addRoute("/users", new UserController());
+        this.router.addRoute("/users", new UserController(userRepository));
     }
 }

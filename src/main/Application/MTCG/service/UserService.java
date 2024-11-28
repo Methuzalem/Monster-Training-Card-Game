@@ -2,9 +2,7 @@ package main.Application.MTCG.service;
 
 
 import main.Application.MTCG.entity.User;
-import main.Application.MTCG.exception.usersEXCPT.UsernameNotFound;
 import main.Application.MTCG.exception.usersEXCPT.UsernameExistsAlready;
-import main.Application.MTCG.repository.UserMemoryRepository;
 import main.Application.MTCG.repository.UserRepository;
 
 import java.util.Optional;
@@ -13,8 +11,9 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService() {
-        this.userRepository = new UserMemoryRepository();
+    public UserService(UserRepository userRepo) {
+
+        this.userRepository = userRepo;
     }
 
     public User create(User user) {
@@ -31,8 +30,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserByName(String username) {
-        return userRepository.findUserByName(username)
-                .orElseThrow(() -> new UsernameNotFound(User.class.getName() + " was not found."));
+    public Optional<User> getUserByName(String username) {
+        return userRepository.findUserByName(username);
     }
 }
