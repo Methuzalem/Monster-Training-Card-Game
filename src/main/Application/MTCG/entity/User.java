@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class User {
 
-    private String id;
+    private final String id;
     private String username;
     private String password;
     private int coins;
